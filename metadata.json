@@ -1,0 +1,8 @@
+{
+  "name": "LetterNext",
+  "description": "Official letter triage copilot: turns scary official correspondence into deadline alerts, missing-document packs, safe official channels, and formal draft replies.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/firebase/firebase-tools/master/schema/firestore-blueprint.json",
+  "collections": [
+    {
+      "path": "users/{userId}",
+      "description": "User profile document storing basic account data and creation timestamp.",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "uid": { "type": "string" },
+          "email": { "type": "string" },
+          "displayName": { "type": "string" },
+          "photoURL": { "type": "string" },
+          "createdAt": { "type": "string" }
+        },
+        "required": ["uid", "email"]
+      }
+    },
+    {
+      "path": "users/{userId}/letters/{letterId}",
+      "description": "Individual analyzed letters belonging to the owner user.",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "rawText": { "type": "string" },
+          "title": { "type": "string" },
+          "createdAt": { "type": "string" },
+          "actionCard": { "type": "object" },
+          "completedChecklist": { "type": "array", "items": { "type": "string" } }
+        },
+        "required": ["id", "rawText", "actionCard"]
+      }
+    },
+    {
+      "path": "users/{userId}/letters/{letterId}/turns/{turnId}",
+      "description": "Multi-turn follow-up chat messages on a specific letter.",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "role": { "type": "string", "enum": ["user", "assistant"] },
+          "content": { "type": "string" },
+          "timestamp": { "type": "string" }
+        },
+        "required": ["id", "role", "content", "timestamp"]
+      }
+    }
+  ]
+}
